@@ -25,7 +25,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import javax.inject.Singleton
 import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.android.scopes.ApplicationScoped
+import javax.inject.Qualifier
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -140,7 +140,7 @@ object DataModule {
     fun provideMovieRepository(
         api: com.hispanotv.data.api.TmdbApi,
         movieDao: MovieDao,
-        @ApplicationScoped apiKey: String
+        @TmdbApiKey apiKey: String
     ): MovieRepository {
         return TmdbRepository(api, movieDao, apiKey)
     }
@@ -151,9 +151,10 @@ object DataModule {
 object ConfigModule {
 
     @Provides
-    @ApplicationScoped
-    fun provideTmdbApiKey(): String {
-        // TODO: Obtener de BuildConfig o secure storage
-        return "TU_TMDB_API_KEY_AQUI"
-    }
+    @TmdbApiKey
+    fun provideTmdbApiKey(): String = com.hispanotv.data.BuildConfig.TMDB_API_KEY
 }
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class TmdbApiKey

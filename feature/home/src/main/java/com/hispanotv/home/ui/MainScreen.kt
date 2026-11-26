@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navArgument
+import androidx.navigation.navArgument
 import androidx.navigation.compose.rememberNavController
 import com.hispanotv.common.ui.theme.HispanoTVTheme
 import com.hispanotv.movies.ui.MovieDetailScreen
@@ -38,7 +38,7 @@ import com.hispanotv.tv.ui.player.PlayerScreen
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
-    val selectedTab by remember { mutableStateOf(0) }
+    var selectedTab by remember { mutableStateOf(0) }
 
     NavHost(navController, startDestination = "home") {
         composable("home") {
@@ -60,10 +60,7 @@ fun MainScreen() {
         ) {
             PlayerScreen(navController = navController)
         }
-        composable(
-            route = "movies",
-            arguments = listOf(navArgument("tab") { type = androidx.navigation.NavType.StringType })
-        ) {
+        composable(route = "movies") {
             MovieListScreen(navController = navController)
         }
         composable(

@@ -15,7 +15,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsStateWithLifecycle
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -37,7 +37,7 @@ import com.hispanotv.domain.model.Movie
 @Composable
 fun MovieListScreen(
     navController: NavController,
-    viewModel: MovieViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: MovieViewModel = androidx.hilt.navigation.compose.hiltViewModel()
 ) {
     val nowPlayingState by viewModel.nowPlayingState.collectAsStateWithLifecycle()
     val searchState by viewModel.searchState.collectAsStateWithLifecycle()

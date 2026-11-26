@@ -16,7 +16,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsStateWithLifecycle
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,7 +36,7 @@ import com.hispanotv.domain.model.MovieVideo
 @Composable
 fun MovieDetailScreen(
     navController: NavController,
-    viewModel: MovieViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: MovieViewModel = androidx.hilt.navigation.compose.hiltViewModel()
 ) {
     val movieId = navController.getString("movieId") ?: ""
     val detailsState by viewModel.movieDetailsState.collectAsStateWithLifecycle()

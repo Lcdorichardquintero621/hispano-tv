@@ -1,4 +1,5 @@
 plugins {
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
@@ -12,6 +13,11 @@ android {
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
+        buildConfigField("String", "TMDB_API_KEY", "\"${System.getenv("TMDB_API_KEY") ?: ""}\"")
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     compileOptions {
@@ -24,13 +30,14 @@ android {
         freeCompilerArgs += listOf(
             "-Xopt-in=kotlin.RequiresOptIn",
             "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-            "-Xopt-in=androidx.room.ExperimentalRoomApi",
-            "-Xopt-in=androidx.datastore.ExperimentalDatastoreApi"
+            "-Xopt-in=androidx.room.ExperimentalRoomApi"
         )
     }
 }
 
 dependencies {
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.gson)
     implementation(project(":core:common"))
     implementation(project(":core:domain"))
 
@@ -57,7 +64,6 @@ dependencies {
 
     // DataStore
     implementation(libs.preferences.datastore)
-    implementation(libs.preferences.datastore.rxjava3)
 
     // WorkManager
     implementation(libs.work.runtime.ktx)

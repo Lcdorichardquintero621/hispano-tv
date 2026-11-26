@@ -1,9 +1,5 @@
 package com.hispanotv.domain.model
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import com.google.android.exoplayer2.source.hls.HlsMediaSource
 import kotlinx.serialization.Serializable
 
 @Serializable

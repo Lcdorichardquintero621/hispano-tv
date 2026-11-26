@@ -1,4 +1,5 @@
 plugins {
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.hilt)
@@ -38,6 +39,10 @@ android {
 }
 
 dependencies {
+    implementation(libs.compose.material.icons.extended)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.core.ktx)
     implementation(project(":core:common"))
     implementation(project(":core:domain"))
     implementation(project(":core:data"))
@@ -49,8 +54,7 @@ dependencies {
     implementation(libs.compose.runtime)
     implementation(libs.compose.foundation)
     implementation(libs.compose.animation)
-    implementation(libs.compose.material3.adaptive)
-    implementation(libs.compose.material3.windowSizeClass)
+    implementation(libs.compose.material3.window.size)
 
     // Navigation
     implementation(libs.navigation.compose)
@@ -58,7 +62,6 @@ dependencies {
 
     // Coil
     implementation(libs.coil.compose)
-    implementation(libs.coil.network.okhttp)
 
     // Hilt
     implementation(libs.hilt.android)

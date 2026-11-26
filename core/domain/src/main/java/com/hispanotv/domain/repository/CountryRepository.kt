@@ -11,10 +11,8 @@ interface CountryRepository {
 
     val countriesFlow: Flow<List<Country>>
 
-    companion object {
-        sealed interface Result<out T> {
-            data class Success<out T>(val data: T) : Result<T>
-            data class Error(val throwable: Throwable, val userMessage: String) : Result<Nothing>
-        }
+    sealed interface Result<out T> {
+        data class Success<out T>(val data: T) : Result<T>
+        data class Error(val throwable: Throwable, val userMessage: String) : Result<Nothing>
     }
 }

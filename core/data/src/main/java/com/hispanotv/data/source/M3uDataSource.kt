@@ -12,6 +12,8 @@ import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
+import javax.inject.Inject
+import kotlinx.coroutines.flow.map
 
 class M3uDataSource @Inject constructor(
     private val okHttpClient: OkHttpClient,
@@ -77,77 +79,80 @@ class M3uDataSource @Inject constructor(
 class M3uChannelRepository @Inject constructor(
     private val dataSource: M3uDataSource
 ) : ChannelRepository {
-    override suspend fun getCountries(): Result<List<Country>> {
+    override suspend fun getCountries(): ChannelRepository.Result<List<Country>> {
         return try {
             dataSource.loadChannels()
-            Result.Success(dataSource.countriesFlow.value)
+            ChannelRepository.Result.Success(dataSource.countriesFlow.value)
         } catch (e: Exception) {
-            Result.Error(e, "Error al obtener países")
+            ChannelRepository.Result.Error(e, "Error al obtener países")
         }
     }
 
-    override suspend fun getChannelsByCountry(countryCode: String): Result<List<Channel>> {
+    override suspend fun getChannelsByCountry(countryCode: String): ChannelRepository.Result<List<Channel>> {
         return try {
-            Result.Success(
+            ChannelRepository.Result.Success(
                 dataSource.channelsFlow.value.filter { it.countryCode == countryCode }
             )
         } catch (e: Exception) {
-            Result.Error(e, "Error al obtener canales")
+            ChannelRepository.Result.Error(e, "Error al obtener canales")
         }
     }
 
-    override suspend fun getChannelsByCategory(category: Channel.ChannelCategory): Result<List<Channel>> {
+    override suspend fun getChannelsByCategory(category: Channel.ChannelCategory): ChannelRepository.Result<List<Channel>> {
         return try {
-            Result.Success(
+            ChannelRepository.Result.Success(
                 dataSource.channelsFlow.value.filter { it.category == category }
             )
         } catch (e: Exception) {
-            Result.Error(e, "Error al obtener canales por categoría")
+            ChannelRepository.Result.Error(e, "Error al obtener canales por categoría")
         }
     }
 
-    override suspend fun searchChannels(query: String): Result<List<Channel>> {
+    override suspend fun searchChannels(query: String): ChannelRepository.Result<List<Channel>> {
         return try {
-            Result.Success(
+            ChannelRepository.Result.Success(
                 dataSource.channelsFlow.value.filter {
                     it.name.contains(query, ignoreCase = true)
                 }
             )
         } catch (e: Exception) {
-            Result.Error(e, "Error en la búsqueda")
+            ChannelRepository.Result.Error(e, "Error en la búsqueda")
         }
     }
 
-    override suspend fun getFavoriteChannels(): Result<List<Channel>> {
+    override suspend fun getFavoriteChannels(): ChannelRepository.Result<List<Channel>> {
         return try {
-            Result.Success(
+            ChannelRepository.Result.Success(
                 dataSource.channelsFlow.value.filter { it.isFavorite }
             )
         } catch (e: Exception) {
-            Result.Error(e, "Error al obtener favoritos")
+            ChannelRepository.Result.Error(e, "Error al obtener favoritos")
         }
     }
 
-    override suspend fun toggleFavorite(channelId: String): Result<Boolean> {
+    override suspend fun toggleFavorite(channelId: String): ChannelRepository.Result<Boolean> {
         return try {
             val channel = dataSource.channelsFlow.value.find { it.id == channelId }
                 ?: throw IllegalArgumentException("Canal no encontrado")
             val newFavorite = !channel.isFavorite
             // TODO: Persist to local DB
-            Result.Success(newFavorite)
+            ChannelRepository.Result.Success(newFavorite)
         } catch (e: Exception) {
-            Result.Error(e, "Error al actualizar favorito")
+            ChannelRepository.Result.Error(e, "Error al actualizar favorito")
         }
     }
 
-    override suspend fun refreshChannels(): Result<Unit> {
+    override suspend fun refreshChannels(): ChannelRepository.Result<Unit> {
         return try {
             dataSource.loadChannels()
-            Result.Success(Unit)
+            ChannelRepository.Result.Success(Unit)
         } catch (e: Exception) {
-            Result.Error(e, "Error al actualizar")
+            ChannelRepository.Result.Error(e, "Error al actualizar")
         }
     }
+
+    override suspend fun getChannelById(channelId: String): Channel? =
+        dataSource.channelsFlow.value.find { it.id == channelId }
 
     override val countriesFlow = dataSource.countriesFlow
     override val favoriteChannelsFlow = dataSource.channelsFlow.map {
@@ -158,40 +163,40 @@ class M3uChannelRepository @Inject constructor(
 class M3uCountryRepository @Inject constructor(
     private val dataSource: M3uDataSource
 ) : CountryRepository {
-    override suspend fun getAllCountries(): Result<List<Country>> {
+    override suspend fun getAllCountries(): CountryRepository.Result<List<Country>> {
         return try {
-            Result.Success(dataSource.countriesFlow.value)
+            CountryRepository.Result.Success(dataSource.countriesFlow.value)
         } catch (e: Exception) {
-            Result.Error(e, "Error al obtener países")
+            CountryRepository.Result.Error(e, "Error al obtener países")
         }
     }
 
-    override suspend fun getPopularCountries(): Result<List<Country>> {
+    override suspend fun getPopularCountries(): CountryRepository.Result<List<Country>> {
         return try {
-            Result.Success(
+            CountryRepository.Result.Success(
                 dataSource.countriesFlow.value.filter { it.isPopular }
             )
         } catch (e: Exception) {
-            Result.Error(e, "Error al obtener países populares")
+            CountryRepository.Result.Error(e, "Error al obtener países populares")
         }
     }
 
-    override suspend fun getCountryByCode(code: String): Result<Country?> {
+    override suspend fun getCountryByCode(code: String): CountryRepository.Result<Country?> {
         return try {
-            Result.Success(
+            CountryRepository.Result.Success(
                 dataSource.countriesFlow.value.find { it.code == code }
             )
         } catch (e: Exception) {
-            Result.Error(e, "Error al obtener país")
+            CountryRepository.Result.Error(e, "Error al obtener país")
         }
     }
 
-    override suspend fun updateChannelCount(code: String, count: Int): Result<Unit> {
+    override suspend fun updateChannelCount(code: String, count: Int): CountryRepository.Result<Unit> {
         return try {
             // Update happens when channels are loaded
-            Result.Success(Unit)
+            CountryRepository.Result.Success(Unit)
         } catch (e: Exception) {
-            Result.Error(e, "Error al actualizar contador")
+            CountryRepository.Result.Error(e, "Error al actualizar contador")
         }
     }
 

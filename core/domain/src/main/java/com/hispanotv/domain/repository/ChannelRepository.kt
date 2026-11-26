@@ -12,15 +12,14 @@ interface ChannelRepository {
     suspend fun getFavoriteChannels(): Result<List<Channel>>
     suspend fun toggleFavorite(channelId: String): Result<Boolean>
     suspend fun refreshChannels(): Result<Unit>
+    suspend fun getChannelById(channelId: String): Channel?
 
     // Flow for reactive UI
     val countriesFlow: Flow<List<Country>>
     val favoriteChannelsFlow: Flow<List<Channel>>
 
-    companion object {
-        sealed interface Result<out T> {
-            data class Success<out T>(val data: T) : Result<T>
-            data class Error(val throwable: Throwable, val userMessage: String) : Result<Nothing>
-        }
+    sealed interface Result<out T> {
+        data class Success<out T>(val data: T) : Result<T>
+        data class Error(val throwable: Throwable, val userMessage: String) : Result<Nothing>
     }
 }

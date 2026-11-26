@@ -31,7 +31,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import coil.size.Transformation
 import com.hispanotv.common.ui.theme.HispanoTVTheme
 import com.hispanotv.common.ui.theme.PrimarySurfaceContainer
 import com.hispanotv.domain.model.Channel
@@ -75,7 +74,7 @@ fun ChannelCard(
                         model = ImageRequest.Builder(LocalContext.current)
                             .data(channel.logoUrl)
                             .crossfade(true)
-                            .transformations(Transformation { it.circleCrop() })
+                            .transformations(coil.transform.CircleCropTransformation())
                             .build(),
                         contentDescription = channel.name,
                         contentScale = ContentScale.Fit,

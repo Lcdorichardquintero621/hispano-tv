@@ -26,10 +26,8 @@ interface MovieRepository {
     val favoriteMoviesFlow: Flow<List<Movie>>
     val watchlistMoviesFlow: Flow<List<Movie>>
 
-    companion object {
-        sealed interface Result<out T> {
-            data class Success<out T>(val data: T) : Result<T>
-            data class Error(val throwable: Throwable, val userMessage: String) : Result<Nothing>
-        }
+    sealed interface Result<out T> {
+        data class Success<out T>(val data: T) : Result<T>
+        data class Error(val throwable: Throwable, val userMessage: String) : Result<Nothing>
     }
 }

@@ -20,10 +20,4 @@
         <!-- Custom attributes -->
         <item name="android:forceDarkAllowed">true</item>
     </style>
-
-    <!-- Splash theme -->
-    <style name="Theme.HispanoTV.Splash" parent="Theme.HispanoTV">
-        <item name="android:windowBackground">@drawable/splash_background</item>
-        <item name="android:windowFullscreen">true</item>
-    </style>
 </resources>

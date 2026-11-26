@@ -16,7 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.runtime.collectAsStateWithLifecycle
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,7 +34,7 @@ import com.hispanotv.tv.ui.player.PlayerScreen
 @Composable
 fun ChannelGridScreen(
     navController: NavController,
-    viewModel: ChannelViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: ChannelViewModel = androidx.hilt.navigation.compose.hiltViewModel()
 ) {
     val countryCode = navController.getString("countryCode") ?: ""
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
