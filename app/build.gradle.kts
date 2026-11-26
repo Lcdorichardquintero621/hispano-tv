@@ -1,4 +1,4 @@
-plugins {
+Jplugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
@@ -82,9 +82,8 @@ dependencies {
     implementation(libs.compose.runtime)
     implementation(libs.compose.foundation)
     implementation(libs.compose.animation)
-    implementation(libs.compose.material3.adaptive)
-    implementation(libs.compose.material3.windowSizeClass)
-    implementation(libs.compose.activity.compose)
+    implementation(libs.compose.material3.window.size)
+    implementation(libs.androidx.activity.compose)
 
     // Navigation
     implementation(libs.navigation.compose)
