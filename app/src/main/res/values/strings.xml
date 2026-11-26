@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">HispanoTV</string>
+    <string name="app_name_short">HispanoTV</string>
+
+    <!-- TV -->
+    <string name="live_tv">TV en Vivo</string>
+    <string name="channels">Canales</string>
+    <string name="countries">Países</string>
+    <string name="search_channels">Buscar canales</string>
+    <string name="no_channels_found">No se encontraron canales</string>
+    <string name="loading_channels">Cargando canales...</string>
+    <string name="error_loading_channels">Error al cargar canales</string>
+    <string name="retry">Reintentar</string>
+    <string name="favorites">Favoritos</string>
+    <string name="add_to_favorites">Añadir a favoritos</string>
+    <string name="remove_from_favorites">Quitar de favoritos</string>
+    <string name="live_now">EN VIVO</string>
+
+    <!-- Movies -->
+    <string name="movies">Películas</string>
+    <string name="now_playing">Estrenos</string>
+    <string name="popular">Populares</string>
+    <string name="top_rated">Mejor valoradas</string>
+    <string name="upcoming">Próximamente</string>
+    <string name="search_movies">Buscar películas</string>
+    <string name="no_movies_found">No se encontraron películas</string>
+    <string name="loading_movies">Cargando películas...</string>
+    <string name="error_loading_movies">Error al cargar películas</string>
+    <string name="overview">Sinopsis</string>
+    <string name="cast">Reparto</string>
+    <string name="similar_movies">Películas similares</string>
+    <string name="release_date">Fecha de estreno</string>
+    <string name="runtime">Duración</string>
+    <string name="budget">Presupuesto</string>
+    <string name="revenue">Recaudación</string>
+    <string name="production_companies">Productoras</string>
+    <string name="production_countries">Países</string>
+    <string name="spoken_languages">Idiomas</string>
+    <string name="add_to_watchlist">Añadir a mi lista</string>
+    <string name="remove_from_watchlist">Quitar de mi lista</string>
+
+    <!-- General -->
+    <string name="settings">Ajustes</string>
+    <string name="language">Idioma</string>
+    <string name="about">Acerca de</string>
+    <string name="version">Versión</string>
+    <string name="privacy_policy">Política de privacidad</string>
+    <string name="terms_of_service">Términos de servicio</string>
+</resources>
