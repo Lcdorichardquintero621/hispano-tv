@@ -21,8 +21,8 @@ android {
     kotlinOptions {
         jvmTarget = "17"
         freeCompilerArgs += listOf(
-            "-Xopt-in=kotlin.RequiresOptIn",
-            "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+            "-opt-in=kotlin.RequiresOptIn",
+            "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
         )
     }
 }
@@ -30,8 +30,11 @@ android {
 dependencies {
     implementation(libs.kotlinx.serialization.json)
 
-    // Coroutines
-    implementation(libs.coroutines.android)
+    // Coroutines / Flow (api: los casos de uso exponen Flow a otros módulos)
+    api(libs.coroutines.android)
+
+    // @Inject en los casos de uso
+    implementation("javax.inject:javax.inject:1")
 
     // Kotlin stdlib
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
