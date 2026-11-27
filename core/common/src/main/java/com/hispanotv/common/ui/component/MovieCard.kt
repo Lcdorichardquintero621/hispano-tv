@@ -1,5 +1,12 @@
 package com.hispanotv.common.ui.component
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.Bookmark
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -147,9 +154,9 @@ fun MovieCard(
                             androidx.compose.material3.IconButton(onClick = onWatchlistClick) {
                                 androidx.compose.material3.Icon(
                                     imageVector = if (movie.isInWatchlist)
-                                        androidx.compose.material.icons.filled.Bookmark
+                                        Icons.Filled.Bookmark
                                     else
-                                        androidx.compose.material.icons.outlined.Bookmark,
+                                        Icons.Outlined.Bookmark,
                                     contentDescription = if (movie.isInWatchlist) "Quitar de lista" else "Añadir a lista",
                                     tint = if (movie.isInWatchlist) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -160,9 +167,9 @@ fun MovieCard(
                             androidx.compose.material3.IconButton(onClick = onFavoriteClick) {
                                 androidx.compose.material3.Icon(
                                     imageVector = if (movie.isFavorite)
-                                        androidx.compose.material.icons.filled.Favorite
+                                        Icons.Filled.Favorite
                                     else
-                                        androidx.compose.material.icons.outlined.Favorite,
+                                        Icons.Outlined.Favorite,
                                     contentDescription = if (movie.isFavorite) "Quitar de favoritos" else "Añadir a favoritos",
                                     tint = if (movie.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -280,9 +287,9 @@ fun MovieCardLarge(
                         androidx.compose.material3.IconButton(onClick = onWatchlistClick) {
                             androidx.compose.material3.Icon(
                                 imageVector = if (movie.isInWatchlist)
-                                    androidx.compose.material.icons.filled.Bookmark
+                                    Icons.Filled.Bookmark
                                 else
-                                    androidx.compose.material.icons.outlined.Bookmark,
+                                    Icons.Outlined.Bookmark,
                                 contentDescription = if (movie.isInWatchlist) "Quitar de lista" else "Añadir a lista",
                                 tint = if (movie.isInWatchlist) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -293,9 +300,9 @@ fun MovieCardLarge(
                         androidx.compose.material3.IconButton(onClick = onFavoriteClick) {
                             androidx.compose.material3.Icon(
                                 imageVector = if (movie.isFavorite)
-                                    androidx.compose.material.icons.filled.Favorite
+                                    Icons.Filled.Favorite
                                 else
-                                    androidx.compose.material.icons.outlined.Favorite,
+                                    Icons.Outlined.Favorite,
                                 contentDescription = if (movie.isFavorite) "Quitar de favoritos" else "Añadir a favoritos",
                                 tint = if (movie.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant
                             )

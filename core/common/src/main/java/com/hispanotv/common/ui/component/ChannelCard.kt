@@ -1,5 +1,10 @@
 package com.hispanotv.common.ui.component
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.platform.LocalContext
 import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -118,9 +123,9 @@ fun ChannelCard(
                         androidx.compose.material3.IconButton(onClick = onFavoriteClick) {
                             androidx.compose.material3.Icon(
                                 imageVector = if (channel.isFavorite)
-                                    androidx.compose.material.icons.filled.Favorite
+                                    Icons.Filled.Favorite
                                 else
-                                    androidx.compose.material.icons.outlined.Favorite,
+                                    Icons.Outlined.Favorite,
                                 contentDescription = if (channel.isFavorite) "Quitar de favoritos" else "Añadir a favoritos",
                                 tint = if (channel.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -232,9 +237,9 @@ fun ChannelCardLarge(
                     androidx.compose.material3.IconButton(onClick = onFavoriteClick) {
                         androidx.compose.material3.Icon(
                             imageVector = if (channel.isFavorite)
-                                androidx.compose.material.icons.filled.Favorite
+                                Icons.Filled.Favorite
                             else
-                                androidx.compose.material.icons.outlined.Favorite,
+                                Icons.Outlined.Favorite,
                             contentDescription = if (channel.isFavorite) "Quitar de favoritos" else "Añadir a favoritos",
                             tint = if (channel.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant
                         )

@@ -1,5 +1,12 @@
 package com.hispanotv.tv.ui.country
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -235,7 +242,7 @@ fun ErrorScreen(message: String, onRetry: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             androidx.compose.material3.Icon(
-                imageVector = androidx.compose.material.icons.filled.ErrorOutline,
+                imageVector = Icons.Filled.ErrorOutline,
                 contentDescription = "Error",
                 modifier = Modifier.size(64.dp),
                 tint = MaterialTheme.colorScheme.error

@@ -1,5 +1,16 @@
 package com.hispanotv.home.ui
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.LiveTv
+import androidx.compose.material.icons.filled.Movie
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.LiveTv
+import androidx.compose.material.icons.outlined.Movie
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -99,10 +110,10 @@ fun HomeContent(
             contentColor = MaterialTheme.colorScheme.onSurface
         ) {
             val items = listOf(
-                NavigationItem("TV en Vivo", androidx.compose.material.icons.filled.LiveTv, androidx.compose.material.icons.outlined.LiveTv),
-                NavigationItem("Películas", androidx.compose.material.icons.filled.Movie, androidx.compose.material.icons.outlined.Movie),
-                NavigationItem("Favoritos", androidx.compose.material.icons.filled.Favorite, androidx.compose.material.icons.outlined.Favorite),
-                NavigationItem("Ajustes", androidx.compose.material.icons.filled.Settings, androidx.compose.material.icons.outlined.Settings)
+                NavigationItem("TV en Vivo", Icons.Filled.LiveTv, Icons.Outlined.LiveTv),
+                NavigationItem("Películas", Icons.Filled.Movie, Icons.Outlined.Movie),
+                NavigationItem("Favoritos", Icons.Filled.Favorite, Icons.Outlined.Favorite),
+                NavigationItem("Ajustes", Icons.Filled.Settings, Icons.Outlined.Settings)
             )
 
             items.forEachIndexed { index, item ->
@@ -135,7 +146,7 @@ fun FavoritesScreen() {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Icon(
-                imageVector = androidx.compose.material.icons.filled.FavoriteBorder,
+                imageVector = Icons.Filled.FavoriteBorder,
                 contentDescription = "",
                 modifier = Modifier.size(64.dp),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
@@ -160,7 +171,7 @@ fun SettingsScreen() {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Icon(
-                imageVector = androidx.compose.material.icons.filled.Settings,
+                imageVector = Icons.Filled.Settings,
                 contentDescription = "",
                 modifier = Modifier.size(64.dp),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant

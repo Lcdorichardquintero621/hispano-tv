@@ -1,5 +1,18 @@
 package com.hispanotv.movies.ui
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.Bookmark
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -175,7 +188,7 @@ fun MovieDetailHeader(
                     // Back button
                     androidx.compose.material3.IconButton(onClick = onBackClick) {
                         Icon(
-                            imageVector = androidx.compose.material.icons.filled.ArrowBack,
+                            imageVector = Icons.Filled.ArrowBack,
                             contentDescription = "Volver",
                             tint = MaterialTheme.colorScheme.onBackground
                         )
@@ -271,9 +284,9 @@ fun MovieDetailHeader(
                     androidx.compose.material3.IconButton(onClick = onWatchlistClick) {
                         Icon(
                             imageVector = if (movie.isInWatchlist)
-                                androidx.compose.material.icons.filled.Bookmark
+                                Icons.Filled.Bookmark
                             else
-                                androidx.compose.material.icons.outlined.Bookmark,
+                                Icons.Outlined.Bookmark,
                             contentDescription = if (movie.isInWatchlist) "En mi lista" : "Añadir a mi lista",
                             tint = if (movie.isInWatchlist) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground
                         )
@@ -281,9 +294,9 @@ fun MovieDetailHeader(
                     androidx.compose.material3.IconButton(onClick = onFavoriteClick) {
                         Icon(
                             imageVector = if (movie.isFavorite)
-                                androidx.compose.material.icons.filled.Favorite
+                                Icons.Filled.Favorite
                             else
-                                androidx.compose.material.icons.outlined.Favorite,
+                                Icons.Outlined.Favorite,
                             contentDescription = if (movie.isFavorite) "Favorito" : "Añadir a favoritos",
                             tint = if (movie.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onBackground
                         )
@@ -528,7 +541,7 @@ fun ErrorScreen(message: String, onRetry: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Icon(
-                imageVector = androidx.compose.material.icons.filled.ErrorOutline,
+                imageVector = Icons.Filled.ErrorOutline,
                 contentDescription = "Error",
                 modifier = Modifier.size(64.dp),
                 tint = MaterialTheme.colorScheme.error

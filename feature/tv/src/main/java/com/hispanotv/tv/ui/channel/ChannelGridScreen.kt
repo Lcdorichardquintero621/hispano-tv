@@ -1,5 +1,14 @@
 package com.hispanotv.tv.ui.channel
 
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.SearchOff
+import androidx.compose.material.icons.filled.TvOff
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,9 +17,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -104,7 +113,7 @@ fun SearchBar(
         label = { Text(text = "Buscar canales...") },
         leadingIcon = {
             Icon(
-                imageVector = androidx.compose.material.icons.filled.Search,
+                imageVector = Icons.Filled.Search,
                 contentDescription = "Buscar",
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -112,7 +121,7 @@ fun SearchBar(
         trailingIcon = {
             if (query.isNotEmpty()) {
                 Icon(
-                    imageVector = androidx.compose.material.icons.filled.Close,
+                    imageVector = Icons.Filled.Close,
                     contentDescription = "Limpiar",
                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                 ) {
@@ -183,9 +192,9 @@ fun ChannelGridContent(
                     "No hay canales disponibles para este país"
                 },
                 icon = if (query.isNotEmpty()) {
-                    androidx.compose.material.icons.filled.SearchOff
+                    Icons.Filled.SearchOff
                 } else {
-                    androidx.compose.material.icons.filled.TvOff
+                    Icons.Filled.TvOff
                 }
             )
         } else {
@@ -285,7 +294,7 @@ fun ErrorScreen(message: String, onRetry: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Icon(
-                imageVector = androidx.compose.material.icons.filled.ErrorOutline,
+                imageVector = Icons.Filled.ErrorOutline,
                 contentDescription = "Error",
                 modifier = Modifier.size(64.dp),
                 tint = MaterialTheme.colorScheme.error

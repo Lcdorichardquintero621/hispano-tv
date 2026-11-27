@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:domain"))
     implementation(libs.coil.compose)
     implementation(libs.compose.material.icons.extended)
     // Compose

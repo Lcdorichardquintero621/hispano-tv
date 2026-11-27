@@ -1,6 +1,7 @@
 package com.hispanotv.common.ui.theme
 
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
@@ -37,7 +38,7 @@ fun PrimarySurfaceContainer(
     content: @Composable () -> Unit
 ) {
     androidx.compose.material3.Surface(
-        containerColor = MaterialTheme.colorScheme.primaryContainer,
+        color = MaterialTheme.colorScheme.primaryContainer,
         contentColor = MaterialTheme.colorScheme.onPrimaryContainer
     ) {
         content()
