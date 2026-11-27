@@ -159,7 +159,9 @@ data class MovieDetailsResponse(
             adult = false,
             originalLanguage = spokenLanguages.firstOrNull()?.iso639_1 ?: "es",
             runtime = runtime,
-            status = MovieStatus.valueOf(status.uppercase().replace(" ", "_")),
+            status = runCatching {
+                MovieStatus.valueOf(status.uppercase().replace(" ", "_"))
+            }.getOrDefault(MovieStatus.RELEASED),
             tagline = tagline,
             budget = budget,
             revenue = revenue,
@@ -193,7 +195,9 @@ data class MovieVideoResponse(
             key = key,
             name = name,
             site = site,
-            type = VideoType.valueOf(type.uppercase()),
+            type = runCatching {
+                VideoType.valueOf(type.uppercase().replace(" ", "_"))
+            }.getOrDefault(VideoType.CLIP),
             official = official,
             publishedAt = publishedAt
         )
@@ -241,10 +245,8 @@ data class ProviderResponse(
     }
 }
 
-extension (WatchProvidersResponse) {
-    fun toWatchProviders(): WatchProviders {
-        return WatchProviders(
-            results = results.mapValues { (k, v) -> k to v.toCountryWatchProviders() }
-        )
-    }
+fun WatchProvidersResponse.toWatchProviders(): WatchProviders {
+    return WatchProviders(
+        results = results.mapValues { (_, value) -> value.toCountryWatchProviders() }
+    )
 }
